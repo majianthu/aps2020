@@ -3,6 +3,7 @@ library(energy) # Distance Correlation
 library(dHSIC) # Hilbert-Schmidt Independence Criterion
 ## for additional tests
 library(HHG) # Heller-Heller-Gorfine Tests of Independence
+# library(TauStar) # for Bergsma-Dassios T* sign covariance
 library(independence) # Hoeffding's D test or Bergsma-Dassios T* sign covariance
 
 scan_heart_data <-function(filename1, nl = 0){
@@ -47,9 +48,9 @@ for (i in 1:n){
   Dx = as.matrix(dist((heart1[,i]), diag = TRUE, upper = TRUE))
   Dy = as.matrix(dist((heart1[,58]), diag = TRUE, upper = TRUE))
   hhg58[i] = hhg.test(Dx,Dy, nr.perm = 1000)
-  #ind58[i] = hoeffding.D.test(heart1[,i],heart1[,58])$Dn
+  ind58[i] = hoeffding.D.test(heart1[,i],heart1[,58])$Dn
   #ind58[i] = hoeffding.refined.test(heart1[,i],heart1[,58])$Rn
-  ind58[i] = tau.star.test(heart1[,i],heart1[,58])$Tn
+  #ind58[i] = tau.star.test(heart1[,i],heart1[,58])$Tn
 }
 dcor58[c(1,2,58)] = 0
 dhsic58[c(1,2,58)] = 0
