@@ -3,7 +3,6 @@ library(energy) # Distance Correlation
 library(dHSIC) # Hilbert-Schmidt Independence Criterion
 ## for additional tests
 library(HHG) # Heller-Heller-Gorfine Tests of Independence
-# library(TauStar) # for Bergsma-Dassios T* sign covariance
 library(independence) # Hoeffding's D test or Bergsma-Dassios T* sign covariance
 
 scan_heart_data <-function(filename1, nl = 0){
