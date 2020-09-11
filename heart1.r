@@ -1,6 +1,10 @@
-library(copent)
-library(energy)
-library(dHSIC)
+library(copent) # Copula Entropy
+library(energy) # Distance Correlation
+library(dHSIC) # Hilbert-Schmidt Independence Criterion
+
+## for additional tests
+library(HHG) # Heller-Heller-Gorfine Tests of Independence
+library(independence) # Hoeffding's D test or Bergsma-Dassios T* sign covariance
 
 scan_heart_data <-function(filename1, nl = 0){
   data1 = scan(filename1, nlines = nl, what = list(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ""))
@@ -43,6 +47,24 @@ for (i in 1:n){
   dhsic58[i] = dhsic(heart1[,i],heart1[,58])$dHSIC
 }
 dhsic58[c(1,2,58)] = 0
+# hhg
+hhg58 = rep(0,n)
+for (i in 1:n){
+  Dx = as.matrix(dist((heart1[,i]), diag = TRUE, upper = TRUE))
+  Dy = as.matrix(dist((heart1[,58]), diag = TRUE, upper = TRUE))
+  hhg58[i] = hhg.test(Dx,Dy, nr.perm = 1000)
+}
+hhg58 = unlist(hhg58)
+hhg58[c(1,2,58)] = 0
+# independence
+ind58 = rep(0,n)
+for (i in 1:n){
+  #ind58[i] = hoeffding.D.test(heart1[,i],heart1[,58])$Dn
+  #ind58[i] = hoeffding.refined.test(heart1[,i],heart1[,58])$Rn
+  ind58[i] = tau.star.test(heart1[,i],heart1[,58])$Tn
+}
+ind58[c(1,2,58)] = 0
+
 
 #### plot
 # ce
@@ -66,3 +88,17 @@ lines(dhsic58)
 axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
 th16c = rep(dhsic58[16],75)
 lines(th16c, col = "red")
+# hhg
+x11(width = 10, height = 5)
+plot(hhg58, xlab = "Variable", ylab = "HHG", xaxt = 'n')
+lines(hhg58)
+axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
+th16d = rep(hhg58[16],75)
+lines(th16d, col = "red")
+# independence
+x11(width = 10, height = 5)
+plot(ind58, xlab = "Variable", ylab = "Hoeffding", xaxt = 'n')
+lines(ind58)
+axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
+th16e = rep(ind58[16],75)
+lines(th16e, col = "red")
