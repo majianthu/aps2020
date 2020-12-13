@@ -6,7 +6,7 @@ library(HHG) # Heller-Heller-Gorfine Tests of Independence
 library(independence) # Hoeffding's D test or Bergsma-Dassios T* sign covariance
 
 scan_heart_data <-function(filename1, nl = 0){
-  data1 = scan(filename1, nlines = nl, what = list(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ""))
+  data1 = scan(filename1, nlines = nl, what = c(as.list(rep(0,75)),list("")))
   l = length(data1[[1]])
   data1m = matrix(unlist(data1), l, 76)
   matrix(as.numeric(data1m[,1:75]), l, 75)
