@@ -4,6 +4,7 @@ library(dHSIC) # Hilbert-Schmidt Independence Criterion
 ## for additional tests
 library(HHG) # Heller-Heller-Gorfine Tests of Independence
 library(independence) # Hoeffding's D test or Bergsma-Dassios T* sign covariance
+library(Ball) # Ball correlation
 
 scan_heart_data <-function(filename1, nl = 0){
   data1 = scan(filename1, nlines = nl, what = c(as.list(rep(0,75)),list("")))
@@ -41,6 +42,7 @@ dcor58 = rep(0,n) # Distance Correlation
 dhsic58 = rep(0,n)  # Hilbert-Schmidt Independence Criterion
 hhg58 = rep(0,n)  # Heller-Heller-Gorfine Tests
 ind58 = rep(0,n)  # Hoeffding's D test or Bergsma-Dassios T* sign covariance
+ball58 = rep(0,n) # Ball correlation
 for (i in 1:n){
   dcor58[i] = dcor(heart1[,i],heart1[,58])
   dhsic58[i] = dhsic(heart1[,i],heart1[,58])$dHSIC
@@ -50,12 +52,14 @@ for (i in 1:n){
   ind58[i] = hoeffding.D.test(heart1[,i],heart1[,58])$Dn
   #ind58[i] = hoeffding.refined.test(heart1[,i],heart1[,58])$Rn
   #ind58[i] = tau.star.test(heart1[,i],heart1[,58])$Tn
+  ball58[i] = bcor(heart1[,i],heart1[,58])
 }
 dcor58[c(1,2,58)] = 0
 dhsic58[c(1,2,58)] = 0
 hhg58 = unlist(hhg58)
 hhg58[c(1,2,58)] = 0
 ind58[c(1,2,58)] = 0
+ball58[c(1,2,58)] = 0
 
 #### plot
 # ce
@@ -93,3 +97,10 @@ lines(ind58)
 axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
 th16e = rep(ind58[16],75)
 lines(th16e, col = "red")
+# ball
+x11(width = 10, height = 5)
+plot(ball58, xlab = "Variable", ylab = "Ball", xaxt = 'n')
+lines(ball58)
+axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
+th16f = rep(ball58[16],75)
+lines(th16f, col = "red")
