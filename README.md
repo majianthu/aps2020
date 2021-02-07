@@ -12,6 +12,8 @@ In the paper, three methods for variable selection are compared on the UCI [hear
 * Bergsma-Dassios T* sign covariance [7],
 * Ball correlation [8].
 
+Copula Entropy does better than all the others measures in terms of predictibility and interpretability.
+
 #### References
 1. Ma, J., & Sun, Z. (2011). Mutual Information Is Copula Entropy. Tsinghua Science & Technology, 16(1), 51–54. See also arXiv preprint arXiv:0808.0845 (2008).
 2. Gretton, A., Fukumizu, K., Teo, C. H., Song, L., Schölkopf, B., & Smola, A. J. (2007). A Kernel Statistical Test of Independence. In Advances in Neural Information Processing Systems 20 (Vol. 20, pp. 585–592).
