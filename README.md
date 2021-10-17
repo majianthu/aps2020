@@ -1,5 +1,7 @@
 # aps2020
-This is the code for the paper 'Variable Selection with Copula Entropy' accepted by Chinese Journal of Applied Probability and Statistics. The preprint paper is available at [here](https://arxiv.org/abs/1910.12389) on ArXiv.
+This is the code for the paper 'Variable Selection with Copula Entropy' published on Chinese Journal of Applied Probability and Statistics. The preprint paper is available at [here](https://arxiv.org/abs/1910.12389) on ArXiv.
+
+* Ma, Jian. “Variable Selection with Copula Entropy.” Chinese Journal of Applied Probability and Statistics, 2021, 37(4): 405-420. See also arXiv preprint arXiv:1910.12389 (2019).
 
 In the paper, three methods for variable selection are compared on the UCI [heart disease data](http://archive.ics.uci.edu/ml/datasets/heart+disease):
 * Copula Entropy [1],
