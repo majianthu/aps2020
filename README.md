@@ -12,7 +12,9 @@ In the paper, three methods for variable selection are compared on the UCI [hear
 * Heller-Heller-Gorfine Tests of Independence [5],
 * Hoeffding's D test [6],
 * Bergsma-Dassios T* sign covariance [7],
-* Ball correlation [8].
+* Ball correlation [8],
+* BET: Binary Expansion Testing [9],
+* qad: Quantification of Asymmetric Dependence [10].
 
 Copula Entropy does better than all the others measures in terms of predictibility and interpretability.
 
@@ -25,3 +27,5 @@ Copula Entropy does better than all the others measures in terms of predictibili
 6. Hoeffding, W. (1948). A Non-Parametric Test of Independence. Annals of Mathematical Statistics, 19(4), 546–557.
 7. Bergsma, W., & Dassios, A. (2014). A consistent test of independence based on a sign covariance related to Kendall’s tau. Bernoulli, 20(2), 1006–1028.
 8. Wenliang Pan, Xueqin Wang, Heping Zhang, Hongtu Zhu & Jin Zhu (2019) Ball Covariance: A Generic Measure of Dependence in Banach Space, Journal of the American Statistical Association. 
+9. Zhang, K. BET on Independence Journal of the American Statistical Association, Taylor & Francis, 2019, 114, 1620-1637.
+10. Junker, R. R.; Griessenberger, F. & Trutschnig, W. Estimating scale-invariant directed dependence of bivariate distributions Computational Statistics & Data Analysis, 2021, 153, 107058.
