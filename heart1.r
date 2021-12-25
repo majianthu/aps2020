@@ -6,7 +6,7 @@ library(HHG) # Heller-Heller-Gorfine Tests of Independence
 library(independence) # Hoeffding's D test or Bergsma-Dassios T* sign covariance
 library(Ball) # Ball correlation
 library(qad) # Quantification of Asymmetric Dependence
-library(BET) # Binary Expansion Testing
+# library(BET) # Binary Expansion Testing
 
 scan_heart_data <-function(filename1, nl = 0){
   data1 = scan(filename1, nlines = nl, what = c(as.list(rep(0,75)),list("")))
@@ -46,7 +46,7 @@ hhg58 = rep(0,n)  # Heller-Heller-Gorfine Tests
 ind58 = rep(0,n)  # Hoeffding's D test or Bergsma-Dassios T* sign covariance
 ball58 = rep(0,n) # Ball correlation
 qad58 = rep(0,n) # Quantification of Asymmetric Dependence
-bet58 = rep(0,n) # Binary Expansion Testing
+# bet58 = rep(0,n) # Binary Expansion Testing
 for (i in 1:n){
   dcor58[i] = dcor(heart1[,i],heart1[,58])
   dhsic58[i] = dhsic(heart1[,i],heart1[,58])$dHSIC
@@ -58,7 +58,7 @@ for (i in 1:n){
   #ind58[i] = tau.star.test(heart1[,i],heart1[,58])$Tn
   ball58[i] = bcor(heart1[,i],heart1[,58])
   qad58[i] = qad(heart1[,i],heart1[,58])$`q(X,Y)`
-  bet58[i] = MaxBETs(heart1[,c(i,58)],test.independence = TRUE)$bet.s.zstatistic
+  # bet58[i] = MaxBETs(heart1[,c(i,58)],test.independence = TRUE)$bet.s.zstatistic
 }
 dcor58[c(1,2,58)] = 0
 dhsic58[c(1,2,58)] = 0
@@ -67,7 +67,7 @@ hhg58[c(1,2,58)] = 0
 ind58[c(1,2,58)] = 0
 ball58[c(1,2,58)] = 0
 qad58[c(1,2,58)] = 0
-bet58[c(1,2,58)] = 0
+# bet58[c(1,2,58)] = 0
 
 #### plot
 # ce
@@ -120,9 +120,9 @@ axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
 th16g = rep(qad58[16],75)
 lines(th16g, col = "red")
 # BET
-x11(width = 10, height = 5)
-plot(bet58, xlab = "Variable", ylab = "BET", xaxt = 'n')
-lines(bet58)
-axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
-th16h = rep(bet58[16],75)
-lines(th16h, col = "red")
+# x11(width = 10, height = 5)
+# plot(bet58, xlab = "Variable", ylab = "BET", xaxt = 'n')
+# lines(bet58)
+# axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
+# th16h = rep(bet58[16],75)
+# lines(th16h, col = "red")
