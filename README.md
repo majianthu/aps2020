@@ -30,4 +30,4 @@ Copula Entropy does better than all the others measures in terms of predictibili
 8. Wenliang Pan, Xueqin Wang, Heping Zhang, Hongtu Zhu & Jin Zhu (2019). Ball Covariance: A Generic Measure of Dependence in Banach Space. Journal of the American Statistical Association, 115, 307-317.
 9. Zhang, K. (2019).BET on Independence. Journal of the American Statistical Association, Taylor & Francis, 114, 1620-1637.
 10. Junker, R. R.; Griessenberger, F. & Trutschnig, W. (2021). Estimating scale-invariant directed dependence of bivariate distributions. Computational Statistics & Data Analysis, 153, 107058.
-11. Genest, C.; Nešlehová, J. G.; Rémillard, B. & Murphy, O. A. Testing for independence in arbitrary distributions Biometrika, 2019, 106, 47-68.
+11. Genest, C.; Nešlehová, J. G.; Rémillard, B. & Murphy, O. A. Testing for independence in arbitrary distributions. Biometrika, 2019, 106, 47-68.
