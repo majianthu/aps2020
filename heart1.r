@@ -7,6 +7,7 @@ library(independence) # Hoeffding's D test or Bergsma-Dassios T* sign covariance
 library(Ball) # Ball correlation
 library(qad) # Quantification of Asymmetric Dependence
 # library(BET) # Binary Expansion Testing
+library(MixedIndTests) # Cramer-von Mises statistics
 
 scan_heart_data <-function(filename1, nl = 0){
   data1 = scan(filename1, nlines = nl, what = c(as.list(rep(0,75)),list("")))
@@ -47,6 +48,7 @@ ind58 = rep(0,n)  # Hoeffding's D test or Bergsma-Dassios T* sign covariance
 ball58 = rep(0,n) # Ball correlation
 qad58 = rep(0,n) # Quantification of Asymmetric Dependence
 # bet58 = rep(0,n) # Binary Expansion Testing
+mixed58 = rep(0,n) # Cramer-von Mises statistics
 for (i in 1:n){
   dcor58[i] = dcor(heart1[,i],heart1[,58])
   dhsic58[i] = dhsic(heart1[,i],heart1[,58])$dHSIC
@@ -59,6 +61,7 @@ for (i in 1:n){
   ball58[i] = bcor(heart1[,i],heart1[,58])
   qad58[i] = qad(heart1[,i],heart1[,58])$`q(X,Y)`
   # bet58[i] = MaxBETs(heart1[,c(i,58)],test.independence = TRUE)$bet.s.zstatistic
+  mixed58[i] = TestIndCopula(heart1[,c(i,58)])$stat
 }
 dcor58[c(1,2,58)] = 0
 dhsic58[c(1,2,58)] = 0
@@ -68,6 +71,7 @@ ind58[c(1,2,58)] = 0
 ball58[c(1,2,58)] = 0
 qad58[c(1,2,58)] = 0
 # bet58[c(1,2,58)] = 0
+mixed58[c(1,2,58)] = 0
 
 #### plot
 # ce
@@ -126,3 +130,12 @@ lines(th16g, col = "red")
 # axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
 # th16h = rep(bet58[16],75)
 # lines(th16h, col = "red")
+# MixedIndCopula
+x11(width = 10, height = 5)
+mixed58 = unlist(mixed58)
+plot(mixed58, xlab = "Variable", ylab = "Mixed", xaxt = 'n')
+lines(mixed58)
+axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
+th16i = rep(mixed58[16],75)
+lines(th16i, col = "red")
+
