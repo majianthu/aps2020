@@ -6,7 +6,7 @@ library(HHG) # Heller-Heller-Gorfine Tests of Independence
 library(independence) # Hoeffding's D test or Bergsma-Dassios T* sign covariance
 library(Ball) # Ball correlation
 library(qad) # Quantification of Asymmetric Dependence
-# library(BET) # Binary Expansion Testing
+library(BET) # Binary Expansion Testing
 library(MixedIndTests) # Cramer-von Mises statistics
 library(NNS) # Nonlinear Nonparametric Statistics
 
@@ -48,7 +48,7 @@ hhg58 = rep(0,n)  # Heller-Heller-Gorfine Tests
 ind58 = rep(0,n)  # Hoeffding's D test or Bergsma-Dassios T* sign covariance
 ball58 = rep(0,n) # Ball correlation
 qad58 = rep(0,n) # Quantification of Asymmetric Dependence
-# bet58 = rep(0,n) # Binary Expansion Testing
+bet58 = rep(0,n) # Binary Expansion Testing
 mixed58 = rep(0,n) # Cramer-von Mises statistics
 nns58 = rep(0,n) # Nonlinear Nonparametric Statistics
 for (i in 1:n){
@@ -62,7 +62,7 @@ for (i in 1:n){
   #ind58[i] = tau.star.test(heart1[,i],heart1[,58])$Tn
   ball58[i] = bcor(heart1[,i],heart1[,58])
   qad58[i] = qad(heart1[,i],heart1[,58])$`q(X,Y)`
-  # bet58[i] = MaxBETs(heart1[,c(i,58)],test.independence = TRUE)$bet.s.zstatistic
+  bet58[i] = BEAST(heart1[,c(i,58)], 3, index = list(1,2))$BEAST.Statistic
   mixed58[i] = TestIndCopula(heart1[,c(i,58)])$stat
   nns58[i] = NNS.dep(heart1[,i],heart1[,58])
 }
@@ -73,7 +73,7 @@ hhg58[c(1,2,58)] = 0
 ind58[c(1,2,58)] = 0
 ball58[c(1,2,58)] = 0
 qad58[c(1,2,58)] = 0
-# bet58[c(1,2,58)] = 0
+bet58[c(1,2,58)] = 0
 mixed58[c(1,2,58)] = 0
 nns58[c(1,2,58)] = 0
 
@@ -128,13 +128,13 @@ axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
 th16g = rep(qad58[16],75)
 lines(th16g, col = "red")
 # BET
-# x11(width = 10, height = 5)
-# plot(bet58, xlab = "Variable", ylab = "BET", xaxt = 'n')
-# lines(bet58)
-# axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
-# th16h = rep(bet58[16],75)
-# lines(th16h, col = "red")
-# MixedIndCopula
+x11(width = 10, height = 5)
+plot(bet58, xlab = "Variable", ylab = "BET", xaxt = 'n')
+lines(bet58)
+axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
+th16h = rep(bet58[16],75)
+lines(th16h, col = "red")
+MixedIndCopula
 x11(width = 10, height = 5)
 mixed58 = unlist(mixed58)
 plot(mixed58, xlab = "Variable", ylab = "Mixed", xaxt = 'n')
