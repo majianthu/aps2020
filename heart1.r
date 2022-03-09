@@ -134,7 +134,7 @@ lines(bet58)
 axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
 th16h = rep(bet58[16],75)
 lines(th16h, col = "red")
-MixedIndCopula
+# MixedIndCopula
 x11(width = 10, height = 5)
 mixed58 = unlist(mixed58)
 plot(mixed58, xlab = "Variable", ylab = "Mixed", xaxt = 'n')
