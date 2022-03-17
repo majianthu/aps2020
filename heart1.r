@@ -145,7 +145,7 @@ lines(th16i, col = "red")
 # NNS
 x11(width = 10, height = 5)
 nns58 = unlist(nns58)
-plot(nns58, xlab = "Variable", ylab = "Mixed", xaxt = 'n')
+plot(nns58, xlab = "Variable", ylab = "NNS", xaxt = 'n')
 lines(nns58)
 axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
 th16j = rep(nns58[16],75)
