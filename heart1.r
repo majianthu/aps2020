@@ -9,6 +9,7 @@ library(qad) # Quantification of Asymmetric Dependence
 library(BET) # Binary Expansion Testing
 library(MixedIndTests) # Cramer-von Mises statistics
 library(NNS) # Nonlinear Nonparametric Statistics
+library(subcopem2D) # supremum dependence
 
 scan_heart_data <-function(filename1, nl = 0){
   data1 = scan(filename1, nlines = nl, what = c(as.list(rep(0,75)),list("")))
@@ -51,6 +52,7 @@ qad58 = rep(0,n) # Quantification of Asymmetric Dependence
 bet58 = rep(0,n) # Binary Expansion Testing
 mixed58 = rep(0,n) # Cramer-von Mises statistics
 nns58 = rep(0,n) # Nonlinear Nonparametric Statistics
+subcop58 = rep(0,n) #supremum dependence
 for (i in 1:n){
   dcor58[i] = dcor(heart1[,i],heart1[,58])
   dhsic58[i] = dhsic(heart1[,i],heart1[,58])$dHSIC
@@ -65,6 +67,7 @@ for (i in 1:n){
   bet58[i] = BEAST(heart1[,c(i,58)], 3, index = list(1,2))$BEAST.Statistic
   mixed58[i] = TestIndCopula(heart1[,c(i,58)])$stat
   nns58[i] = NNS.dep(heart1[,i],heart1[,58])
+  subcop58[i] = dependence(heart1[,c(i,58)])[1,2,2]
 }
 dcor58[c(1,2,58)] = 0
 dhsic58[c(1,2,58)] = 0
@@ -76,6 +79,7 @@ qad58[c(1,2,58)] = 0
 bet58[c(1,2,58)] = 0
 mixed58[c(1,2,58)] = 0
 nns58[c(1,2,58)] = 0
+subcop58[c(1,2,58)] = 0
 
 #### plot
 # ce
@@ -150,5 +154,10 @@ lines(nns58)
 axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
 th16j = rep(nns58[16],75)
 lines(th16j, col = "red")
-
-
+# subcop
+x11(width = 10, height = 5)
+plot(subcop58, xlab = "Variable", ylab = "subcop", xaxt = 'n')
+lines(subcop58)
+axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
+th16k = rep(subcop58[16],75)
+lines(th16k, col = "red")
