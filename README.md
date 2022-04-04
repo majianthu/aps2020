@@ -16,7 +16,8 @@ In the paper, three methods for variable selection are compared on the UCI [hear
 * BET: Binary Expansion Testing [9],
 * qad: Quantification of Asymmetric Dependence [10],
 * MixedIndTests [11],
-* NNS: Nonlinear Nonparametric Statistics [12].
+* NNS: Nonlinear Nonparametric Statistics [12],
+* subcopula based dependence measures [13].
 
 Copula Entropy does better than all the others measures in terms of predictibility and interpretability.
 
@@ -33,3 +34,4 @@ Copula Entropy does better than all the others measures in terms of predictibili
 10. Junker, R. R.; Griessenberger, F. & Trutschnig, W. (2021). Estimating scale-invariant directed dependence of bivariate distributions. Computational Statistics & Data Analysis, 153, 107058.
 11. Genest, C.; Nešlehová, J. G.; Rémillard, B. & Murphy, O. A. Testing for independence in arbitrary distributions. Biometrika, 2019, 106, 47-68.
 12. Viole, Fred and Nawrocki, David N., Deriving Nonlinear Correlation Coefficients from Partial Moments (September 18, 2012). Available at SSRN: https://ssrn.com/abstract=2148522 or http://dx.doi.org/10.2139/ssrn.2148522
+13. Arturo Erdely. A subcopula based dependence measure. Kybernetika, 53(2), 231-243, 2017.
