@@ -8,7 +8,7 @@ In the paper, three methods for variable selection are compared on the UCI [hear
 * Hilbert-Schimdt Independence Criterion (HSIC) [2,3],
 * Distance Correlation [4].
 
- Four additional independence measures are also considered in this version of comparison experiment:
+ The following additional independence measures are also considered in this version of comparison experiment:
 * Heller-Heller-Gorfine Tests of Independence [5],
 * Hoeffding's D test [6],
 * Bergsma-Dassios T* sign covariance [7],
