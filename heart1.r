@@ -10,6 +10,7 @@ library(BET) # Binary Expansion Testing
 library(MixedIndTests) # Cramer-von Mises statistics
 library(NNS) # Nonlinear Nonparametric Statistics
 library(subcopem2D) # supremum dependence
+library(EDMeasure) # Mutual Independence Measure
 
 scan_heart_data <-function(filename1, nl = 0){
   data1 = scan(filename1, nlines = nl, what = c(as.list(rep(0,75)),list("")))
@@ -53,6 +54,7 @@ bet58 = rep(0,n) # Binary Expansion Testing
 mixed58 = rep(0,n) # Cramer-von Mises statistics
 nns58 = rep(0,n) # Nonlinear Nonparametric Statistics
 subcop58 = rep(0,n) #supremum dependence
+mdm58 = rep(0,n) # mutual independence measure
 for (i in 1:n){
   dcor58[i] = dcor(heart1[,i],heart1[,58])
   dhsic58[i] = dhsic(heart1[,i],heart1[,58])$dHSIC
@@ -68,6 +70,7 @@ for (i in 1:n){
   mixed58[i] = TestIndCopula(heart1[,c(i,58)])$stat
   nns58[i] = NNS.dep(heart1[,i],heart1[,58])
   subcop58[i] = dependence(heart1[,c(i,58)])[1,2,2]
+  mdm58[i] = mdm_test(heart1[,c(i,58)])$stat
 }
 dcor58[c(1,2,58)] = 0
 dhsic58[c(1,2,58)] = 0
@@ -80,6 +83,7 @@ bet58[c(1,2,58)] = 0
 mixed58[c(1,2,58)] = 0
 nns58[c(1,2,58)] = 0
 subcop58[c(1,2,58)] = 0
+mdm58[c(1,2,58)] = 0
 
 #### plot
 # ce
@@ -161,3 +165,10 @@ lines(subcop58)
 axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
 th16k = rep(subcop58[16],75)
 lines(th16k, col = "red")
+# mdm
+x11(width = 10, height = 5)
+plot(mdm58, xlab = "Variable", ylab = "MDM", xaxt = 'n')
+lines(mdm58)
+axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
+th16l = rep(mdm58[16],75)
+lines(th16l, col = "red")
