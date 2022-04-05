@@ -17,7 +17,8 @@ In the paper, three methods for variable selection are compared on the UCI [hear
 * qad: Quantification of Asymmetric Dependence [10],
 * MixedIndTests [11],
 * NNS: Nonlinear Nonparametric Statistics [12],
-* subcopula based dependence measures [13].
+* subcopula based dependence measures [13],
+* MDM: Mutual Independence Measure [14].
 
 Copula Entropy does better than all the others measures in terms of predictibility and interpretability.
 
@@ -35,3 +36,4 @@ Copula Entropy does better than all the others measures in terms of predictibili
 11. Genest, C.; Nešlehová, J. G.; Rémillard, B. & Murphy, O. A. Testing for independence in arbitrary distributions. Biometrika, 2019, 106, 47-68.
 12. Viole, Fred and Nawrocki, David N., Deriving Nonlinear Correlation Coefficients from Partial Moments (September 18, 2012). Available at SSRN: https://ssrn.com/abstract=2148522 or http://dx.doi.org/10.2139/ssrn.2148522
 13. Arturo Erdely. A subcopula based dependence measure. Kybernetika, 53(2), 231-243, 2017.
+14. Ze Jin, David S. Matteson. Generalizing Distance Covariance to Measure and Test Multivariate Mutual Dependence. arXiv preprint arXiv:1709.02532, 2017.
