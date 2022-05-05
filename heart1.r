@@ -11,6 +11,7 @@ library(MixedIndTests) # Cramer-von Mises statistics
 library(NNS) # Nonlinear Nonparametric Statistics
 library(subcopem2D) # supremum dependence
 library(EDMeasure) # Mutual Independence Measure
+library(FOCI) # Dependence Coefficient 
 
 scan_heart_data <-function(filename1, nl = 0){
   data1 = scan(filename1, nlines = nl, what = c(as.list(rep(0,75)),list("")))
@@ -55,6 +56,7 @@ mixed58 = rep(0,n) # Cramer-von Mises statistics
 nns58 = rep(0,n) # Nonlinear Nonparametric Statistics
 subcop58 = rep(0,n) #supremum dependence
 mdm58 = rep(0,n) # mutual independence measure
+codec58 = rep(0,n) # dependence coefficient
 for (i in 1:n){
   dcor58[i] = dcor(heart1[,i],heart1[,58])
   dhsic58[i] = dhsic(heart1[,i],heart1[,58])$dHSIC
@@ -71,6 +73,7 @@ for (i in 1:n){
   nns58[i] = NNS.dep(heart1[,i],heart1[,58])
   subcop58[i] = dependence(heart1[,c(i,58)])[1,2,2]
   mdm58[i] = mdm_test(heart1[,c(i,58)])$stat
+  codec58[i] = codec(heart1[,i],heart1[,58])
 }
 dcor58[c(1,2,58)] = 0
 dhsic58[c(1,2,58)] = 0
@@ -84,6 +87,7 @@ mixed58[c(1,2,58)] = 0
 nns58[c(1,2,58)] = 0
 subcop58[c(1,2,58)] = 0
 mdm58[c(1,2,58)] = 0
+codec58[c(1,2,58)] = 0
 
 #### plot
 # ce
@@ -172,3 +176,10 @@ lines(mdm58)
 axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
 th16l = rep(mdm58[16],75)
 lines(th16l, col = "red")
+# CODEC
+x11(width = 10, height = 5)
+plot(codec58, xlab = "Variable", ylab = "CODEC", xaxt = 'n')
+lines(codec58)
+axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
+th16k = rep(codec58[16],75)
+lines(th16k, col = "red")
