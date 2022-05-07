@@ -72,8 +72,8 @@ for (i in 1:n){
   ball58[i] = bcor(heart1[,i],heart1[,58])
   qad58[i] = qad(heart1[,i],heart1[,58])$`q(X,Y)`
   bet58[i] = BEAST(heart1[,c(i,58)], 3, index = list(1,2))$BEAST.Statistic
-  mixed58[i] = TestIndCopula(heart1[,c(i,58)])$stat
-  nns58[i] = NNS.dep(heart1[,i],heart1[,58])
+  mixed58[i] = TestIndCopula(heart1[,c(i,58)])$stat$cvm
+  nns58[i] = NNS.dep(heart1[,i],heart1[,58])$Dependence
   subcop58[i] = dependence(heart1[,c(i,58)])[1,2,2]
   mdm58[i] = mdm_test(heart1[,c(i,58)])$stat
   codec58[i] = codec(heart1[,i],heart1[,58])
