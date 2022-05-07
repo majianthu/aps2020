@@ -81,7 +81,6 @@ for (i in 1:n){
 ktau50[c(1,2,58)] = 0
 dcor58[c(1,2,58)] = 0
 dhsic58[c(1,2,58)] = 0
-hhg58 = unlist(hhg58)
 hhg58[c(1,2,58)] = 0
 ind58[c(1,2,58)] = 0
 bdtau58[c(1,2,58)] = 0
@@ -167,7 +166,6 @@ th16h = rep(bet58[16],75)
 lines(th16h, col = "red")
 # MixedIndCopula
 x11(width = 10, height = 5)
-mixed58 = unlist(mixed58)
 plot(mixed58, xlab = "Variable", ylab = "Mixed", xaxt = 'n')
 lines(mixed58)
 axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
@@ -175,7 +173,6 @@ th16i = rep(mixed58[16],75)
 lines(th16i, col = "red")
 # NNS
 x11(width = 10, height = 5)
-nns58 = unlist(nns58)
 plot(nns58, xlab = "Variable", ylab = "NNS", xaxt = 'n')
 lines(nns58)
 axis(side = 1, at = c(seq(1,75, by = 5)), labels = c(seq(1,75, by = 5)))
