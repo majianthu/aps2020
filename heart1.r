@@ -30,21 +30,7 @@ m = dim(heart1)[1]
 n = dim(heart1)[2]
 
 ## statistical dependence with attr #58
-# Copula Entropy
-l = 50
-ce58 = rep(0,n)
-for (i in 1:n){
-  for (j in 1:l){
-    data2 = heart1[,c(i,58)]
-    data2[,1] = data2[,1] + max(abs(data2[,1])) * 0.000001 * rnorm(m)
-    data2[,2] = data2[,2] + max(abs(data2[,2])) * 0.000001 * rnorm(m)
-    ce58[i] = ce58[i] + copent(data2)
-  }
-}
-ce58 = ce58 / l
-ce58[c(1,2,58)] = min(ce58)
-
-# Other Independence Measures
+ce58 = rep(0,n) # Copula Entropy
 ktau58 = rep(0,n) # Kendall's tau
 dcor58 = rep(0,n) # Distance Correlation
 dhsic58 = rep(0,n)  # Hilbert-Schmidt Independence Criterion
@@ -60,6 +46,13 @@ subcop58 = rep(0,n) #supremum dependence
 mdm58 = rep(0,n) # mutual independence measure
 codec58 = rep(0,n) # dependence coefficient
 for (i in 1:n){
+    for (j in 1:20){
+    data2 = heart1[,c(i,58)]
+    data2[,1] = data2[,1] + max(abs(data2[,1])) * 0.000001 * rnorm(m)
+    data2[,2] = data2[,2] + max(abs(data2[,2])) * 0.000001 * rnorm(m)
+    ce58[i] = ce58[i] + copent(data2)/20
+  }
+
   ktau58[i] = cor(heart1[,c(i,58)], method = "kendall")[1,2]
   dcor58[i] = dcor(heart1[,i],heart1[,58])
   dhsic58[i] = dhsic(heart1[,i],heart1[,58])$dHSIC
@@ -78,6 +71,8 @@ for (i in 1:n){
   mdm58[i] = mdm_test(heart1[,c(i,58)])$stat
   codec58[i] = codec(heart1[,i],heart1[,58])
 }
+
+ce58[c(1,2,58)] = min(ce58)
 ktau50[c(1,2,58)] = 0
 dcor58[c(1,2,58)] = 0
 dhsic58[c(1,2,58)] = 0
